@@ -6,10 +6,8 @@ services:
 stages:
   - build
   - test
-  - release
-  - preprod
-  - integration
-  - prod
+  - dast
+  
 
 build:
   stage: build
@@ -34,7 +32,7 @@ test:
    - python manage.py test taskManager
 
 zap-baseline:
-  stage: integration
+  stage: dast
   before_script:
     - docker pull softwaresecurityproject/zap-stable:2.13.0
   script:

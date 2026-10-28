@@ -38,7 +38,7 @@ zap-baseline:
   before_script:
     - docker pull softwaresecurityproject/zap-stable:2.13.0
   script:
-    - docker run --user $(id -u):$(id -g) -w /zap -v $(pwd):/zap/wrk:rw --rm softwaresecurityproject/zap-stable:2.13.0 zap-baseline.py -t https://server -J zap-output.json
+    - docker run --user $(id -u):$(id -g) -w /zap -v $(pwd):/zap/wrk:rw --rm softwaresecurityproject/zap-stable:2.13.0 zap-baseline.py -t https://$DAST_TARGET_URL -J zap-output.json
   after_script:
     - docker rmi softwaresecurityproject/zap-stable:2.13.0  # clean up the image to save the disk space
   artifacts:

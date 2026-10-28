@@ -32,10 +32,7 @@ test:
    - source env/bin/activate
    - pip install -r requirements.txt
    - python manage.py test taskManager
-zap-baseline:
-  stage: integration
-  script:
-    - docker run --user $(id -u):$(id -g) -w /zap -v $(pwd):/zap/wrk:rw --rm softwaresecurityproject/zap-stable:2.13.0 zap-baseline.py -t https://server -J zap-output.json
+
 zap-baseline:
   stage: integration
   before_script:
